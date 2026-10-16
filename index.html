@@ -368,9 +368,6 @@
 <script>
 /* =========================================================
    СЦЕНАРИЙ ТРЕНАЖЁРА
-   Кейсы идут последовательно. В Кейсе 3 есть развилка:
-   после верного ответа оператора ученик выбирает,
-   как ответит курьер, и смотрит оба исхода.
    ========================================================= */
 const cases = [
 
@@ -616,6 +613,16 @@ let branchesShown  = new Set();
 /* ---------- утилиты ---------- */
 function scrollDown() { chatEl.scrollTop = chatEl.scrollHeight; }
 
+/* Перемешивание Фишера–Йетса */
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function addMessage(text, type, mod) {
   const row = document.createElement('div');
   row.className = 'msg ' + type + (mod ? ' ' + mod : '');
@@ -710,7 +717,10 @@ function renderOptions(step) {
   label.textContent = 'Выберите ответ оператора';
   optionsEl.appendChild(label);
 
-  step.options.forEach(function (opt) {
+  /* Перемешиваем варианты каждый раз при показе шага */
+  const shuffled = shuffleArray(step.options);
+
+  shuffled.forEach(function (opt) {
     const btn = document.createElement('button');
     btn.className = 'option';
     btn.type = 'button';
@@ -768,6 +778,7 @@ function renderBranch(step) {
   label.textContent = step.branch.prompt;
   optionsEl.appendChild(label);
 
+  /* Варианты развилки оставляем в исходном порядке (А, Б) */
   step.branch.options.forEach(function (br, i) {
     const btn = document.createElement('button');
     btn.className = 'option';
