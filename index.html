@@ -41,7 +41,7 @@
     width: 100%;
     max-width: 780px;
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 6px;
     box-shadow: 0 10px 40px rgba(0,0,0,.08);
     display: flex;
     flex-direction: column;
@@ -57,87 +57,93 @@
     background: var(--white);
   }
 
-  .header-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .header-top { display: flex; align-items: center; gap: 12px; }
 
   .logo {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
+    width: 38px; height: 38px;
+    border-radius: 6px;
     background: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
   }
 
   .header h1 {
-    font-size: 17px;
-    line-height: 1.25;
-    margin: 0;
-    font-weight: 600;
-    letter-spacing: -.01em;
+    font-size: 17px; line-height: 1.25;
+    margin: 0; font-weight: 600; letter-spacing: -.01em;
   }
 
   .header p {
-    margin: 2px 0 0;
-    font-size: 12.5px;
-    color: var(--muted);
+    margin: 2px 0 0; font-size: 12.5px; color: var(--muted);
   }
 
   .progress-wrap {
     margin-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
   }
 
   .progress {
-    flex: 1;
-    height: 6px;
+    flex: 1; height: 6px;
     background: var(--grey);
-    border-radius: 3px;
-    overflow: hidden;
+    border-radius: 2px; overflow: hidden;
   }
 
   .progress span {
-    display: block;
-    height: 100%;
-    width: 0;
+    display: block; height: 100%; width: 0;
     background: var(--gold);
-    border-radius: 3px;
+    border-radius: 2px;
     transition: width .45s cubic-bezier(.4,0,.2,1);
   }
 
   .step-label {
-    font-size: 12px;
-    color: var(--muted);
-    white-space: nowrap;
+    font-size: 12px; color: var(--muted); white-space: nowrap;
   }
 
   /* ============ ЧАТ ============ */
   .chat {
-    flex: 1;
-    overflow-y: auto;
+    flex: 1; overflow-y: auto;
     padding: 22px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    display: flex; flex-direction: column; gap: 14px;
     background: var(--white);
     scroll-behavior: smooth;
   }
 
   .chat::-webkit-scrollbar { width: 6px; }
-  .chat::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 3px; }
+  .chat::-webkit-scrollbar-thumb { background: var(--grey); border-radius: 2px; }
 
+  /* ---------- РАЗДЕЛИТЕЛЬ КЕЙСОВ ---------- */
+  .case-divider {
+    position: relative;
+    align-self: stretch;
+    text-align: center;
+    margin: 4px 0 6px;
+    animation: pop .3s ease;
+  }
+
+  .case-divider::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    height: 1px;
+    background: var(--grey);
+    z-index: 0;
+  }
+
+  .case-divider span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    background: var(--white);
+    padding: 0 14px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- СООБЩЕНИЯ ---------- */
   .msg {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
+    display: flex; gap: 10px; align-items: flex-end;
     max-width: 86%;
     animation: pop .28s cubic-bezier(.2,.9,.3,1.2);
   }
@@ -151,15 +157,9 @@
   .msg.operator { align-self: flex-end; flex-direction: row-reverse; }
 
   .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 600;
-    flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
     user-select: none;
   }
 
@@ -168,7 +168,7 @@
 
   .bubble {
     padding: 12px 16px;
-    border-radius: 16px;
+    border-radius: 8px;
     font-size: 14.5px;
     line-height: 1.5;
     white-space: pre-line;
@@ -176,12 +176,12 @@
 
   .courier .bubble {
     background: var(--grey);
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 4px;
   }
 
   .operator .bubble {
     background: var(--gold);
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 4px;
   }
 
   .msg.operator.wrong .bubble {
@@ -190,7 +190,7 @@
     color: #8C1D22;
   }
 
-  /* индикатор «печатает» */
+  /* ---------- ПЕЧАТАЕТ ---------- */
   .typing { display: flex; gap: 5px; align-items: center; padding: 14px 16px; }
   .typing i {
     width: 7px; height: 7px; border-radius: 50%;
@@ -212,7 +212,7 @@
     font-size: 13.5px;
     line-height: 1.5;
     padding: 12px 16px;
-    border-radius: 12px;
+    border-radius: 4px;
     animation: pop .28s ease;
   }
 
@@ -226,11 +226,8 @@
     padding: 16px 24px 20px;
     border-top: 1px solid var(--grey);
     background: var(--white);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 46%;
-    overflow-y: auto;
+    display: flex; flex-direction: column; gap: 10px;
+    max-height: 46%; overflow-y: auto;
   }
 
   .options-label {
@@ -244,7 +241,7 @@
   .option {
     text-align: left;
     padding: 14px 16px;
-    border-radius: 12px;
+    border-radius: 4px;
     border: 1.5px solid var(--grey);
     background: var(--white);
     font-family: inherit;
@@ -267,15 +264,25 @@
   .option.wrong {
     border-color: var(--red);
     background: var(--red-bg);
-    opacity: 1;
-    cursor: default;
+    opacity: 1; cursor: default;
   }
 
   .option.correct {
     border-color: var(--gold);
     background: var(--gold-bg);
-    opacity: 1;
-    cursor: default;
+    opacity: 1; cursor: default;
+  }
+
+  .option.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .option.primary:hover:not(:disabled) {
+    filter: brightness(.96);
+    background: var(--gold);
   }
 
   /* ============ ФИНАЛ ============ */
@@ -285,7 +292,7 @@
     max-width: 480px;
     background: var(--white);
     border: 2px solid var(--gold);
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 24px;
     text-align: center;
     animation: pop .35s ease;
@@ -294,27 +301,20 @@
   .result-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
 
   .result-score {
-    font-size: 34px;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1;
-    margin-bottom: 12px;
+    font-size: 34px; font-weight: 700;
+    color: var(--ink); line-height: 1; margin-bottom: 12px;
   }
 
   .result-score span {
-    display: block;
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--muted);
-    margin-top: 6px;
-    letter-spacing: .02em;
+    display: block; font-size: 12px; font-weight: 400;
+    color: var(--muted); margin-top: 6px; letter-spacing: .02em;
   }
 
   .result-sub { font-size: 14px; line-height: 1.5; color: #4A4A4A; }
 
   .restart {
     padding: 15px 20px;
-    border-radius: 12px;
+    border-radius: 4px;
     border: none;
     background: var(--gold);
     color: var(--ink);
@@ -333,9 +333,7 @@
     body { padding: 0; }
     .app {
       border-radius: 0;
-      height: 100vh;
-      min-height: 100vh;
-      max-width: 100%;
+      height: 100vh; min-height: 100vh; max-width: 100%;
     }
     .header  { padding: 16px 16px 14px; }
     .chat    { padding: 18px 16px; }
@@ -359,7 +357,7 @@
     </div>
     <div class="progress-wrap">
       <div class="progress"><span id="progressFill"></span></div>
-      <div class="step-label" id="stepLabel">Шаг 1 из 4</div>
+      <div class="step-label" id="stepLabel">Шаг 1 из 9</div>
     </div>
   </header>
 
@@ -370,95 +368,229 @@
 <script>
 /* =========================================================
    СЦЕНАРИЙ ТРЕНАЖЁРА
-   Каждый шаг: реплика курьера + 3 варианта ответа оператора.
-   Ровно один вариант — верный.
+   Кейсы идут последовательно. В Кейсе 3 есть развилка:
+   после верного ответа оператора ученик выбирает,
+   как ответит курьер, и смотрит оба исхода.
    ========================================================= */
-const scenario = [
+const cases = [
 
-  /* ---------- ШАГ 1 ---------- */
+  /* ================= КЕЙС 1 ================= */
   {
-    courier: "Почему байк не открывается?! Приложение пишет ошибку или просто висит. Я не могу начать смену, время уходит! Срочно решите вопрос!",
-    options: [
+    title: "Кейс 1. Байк не открывается",
+    steps: [
       {
-        correct: true,
-        text: "Вот небольшая инструкция: 1. Убедитесь, что в Яндекс Байк и на дисплее электровелосипеда нет мигающих красным или жёлтым индикаторов. 2. Попробуйте переподключить батарею.",
-        feedback: "Вы дали конкретную пошаговую инструкцию и сразу подключили курьера к диагностике. Это экономит его время и решает проблему на первом уровне поддержки."
+        courier: "Почему байк не открывается?! Приложение пишет ошибку или просто висит. Я не могу начать смену, время уходит! Срочно решите вопрос!",
+        options: [
+          {
+            correct: true,
+            text: "Вот небольшая инструкция: 1. Убедитесь, что в Яндекс Байк и на дисплее электровелосипеда нет мигающих красным или жёлтым индикаторов. 2. Попробуйте переподключить батарею.",
+            feedback: "Вы дали конкретную пошаговую инструкцию и сразу подключили курьера к диагностике. Это экономит его время и решает проблему на первом уровне поддержки."
+          },
+          {
+            correct: false,
+            text: "Понял вас, давайте попробуем начать с простого: полностью закройте приложение Яндекс Байк, откройте заново и попробуйте снова разблокировать байк.",
+            feedback: "Шаг сам по себе рабочий, но он не проверяет состояние самого байка. Если проблема в железе, перезапуск приложения ничего не даст. Сначала — проверка индикаторов и батареи."
+          },
+          {
+            correct: false,
+            text: "Похоже, байк действительно неисправен. Если рядом есть другой свободный байк — можете взять его, а этот мы пометим как требующий обслуживания.",
+            feedback: "Преждевременный вывод: причина может быть в простом сбое, который устраняется за минуту. Оставляя байк, курьер теряет время на поиск нового, а байк уходит в сервис без причины. Сначала — базовая диагностика."
+          }
+        ]
       },
       {
-        correct: false,
-        text: "Перезагрузите телефон, удалите и заново установите приложение — обычно это помогает.",
-        feedback: "Слишком общая рекомендация. Проблема может быть в самом байке, а не в телефоне. Переустановка приложения отнимет у курьера 10–15 минут и может не помочь. Сначала — проверка индикаторов и батареи."
+        courier: "Попробовал, не помогло. Индикаторов нет, батарею переподключал. Байк всё равно не открывается.",
+        options: [
+          {
+            correct: true,
+            text: "Пришлите, пожалуйста, видео, подтверждающее поломку Байка. На записи должен быть чётко виден номер. Мы оперативно передадим материалы специалистам для решения вопроса.",
+            feedback: "Отлично! Вы запросили доказательство поломки по регламенту, объяснили, что именно должно быть на видео, и обозначили следующий шаг."
+          },
+          {
+            correct: false,
+            text: "Хорошо, давайте попробуем ещё раз, но теперь внимательнее: отключите батарею, подождите 10–15 секунд и подключите до щелчка. Иногда с первого раза контакт не срабатывает.",
+            feedback: "Курьер уже переподключал батарею. Давать то же действие в новой упаковке — значит тянуть время. Пора переходить к следующему этапу: запрос видео."
+          },
+          {
+            correct: false,
+            text: "Спасибо, что сообщили. Я сейчас проверю статус байка в системе — это может занять несколько минут. Пожалуйста, оставайтесь на связи.",
+            feedback: "Вы пообещали действие, но не запросили ни доказательств, ни обозначили следующий шаг для курьера. Это создаёт «подвешенное» состояние. Правильно — запросить видео с номером байка и передать в работу специалистам."
+          }
+        ]
       },
       {
-        correct: false,
-        text: "Раз байк не открывается — он неисправен. Берите другой, а этот мы заберём.",
-        feedback: "Нет диагностики и нет эмпатии. Курьер и так на нервах, а вы сразу «списываете» байк. Сначала нужно отработать простые шаги: индикаторы и переподключение батареи."
+        courier: "Вот видео, номер видно. Посмотрите, пожалуйста, скорее, я жду.",
+        options: [
+          {
+            correct: true,
+            text: "Передаю ваше обращение специалисту, который поможет в решении вопроса, пожалуйста, подождите.",
+            feedback: "Вы подтвердили, что видео получено, и обозначили передачу обращения специалисту — курьер понимает, что процесс идёт."
+          },
+          {
+            correct: false,
+            text: "Спасибо за видео! Вижу, что вы всё сделали правильно. Давайте попробуем ещё раз: закройте приложение полностью, откройте и попробуйте разблокировать байк заново.",
+            feedback: "Вы возвращаете курьера к шагу, который уже не работает, и не передаёте обращение дальше. Это затягивает решение и снижает доверие к поддержке."
+          },
+          {
+            correct: false,
+            text: "Видео получил, спасибо. К сожалению, номер байка на записи читается не очень чётко — возможно, из-за блика. Могли бы вы переснять, немного приблизив камеру к номеру?",
+            feedback: "Курьер написал, что номер видно. Если сомневаетесь — сначала перепроверьте запись сами. Отправлять на пересъёмку без проверки — значит обвинять клиента и терять время."
+          }
+        ]
+      },
+      {
+        courier: "Жду. Надеюсь, быстро решите.",
+        options: [
+          {
+            correct: true,
+            text: "Ваше обращение зарегистрировано, специалист уже занимается им. Среднее время решения — до 15 минут, я остаюсь с вами на связи. Спасибо за терпение!",
+            feedback: "Идеальное завершение: подтверждение, конкретный срок и готовность помочь дальше. Курьер чувствует, что его не бросили."
+          },
+          {
+            correct: false,
+            text: "К сожалению, точное время решения я вам назвать не могу — это зависит от загрузки специалистов. Как только будет новость, я сразу вам напишу.",
+            feedback: "Формально честно, но курсант не получил ориентира. Курьер без понимания сроков тревожится сильнее. Нужно назвать хотя бы среднее время и остаться на связи."
+          },
+          {
+            correct: false,
+            text: "Принято. Если у вас появятся ещё вопросы — обращайтесь, мы всегда на связи.",
+            feedback: "Преждевременное завершение диалога. Обращение ещё не решено, курьер без байка и без понимания сроков. Диалог закрывать рано."
+          }
+        ]
       }
     ]
   },
 
-  /* ---------- ШАГ 2 ---------- */
+  /* ================= КЕЙС 2 ================= */
   {
-    courier: "Попробовал, не помогло. Индикаторов нет, батарею переподключал. Байк всё равно не открывается.",
-    options: [
+    title: "Кейс 2. Быстро разряжается батарея",
+    steps: [
       {
-        correct: true,
-        text: "Пришлите, пожалуйста, видео, подтверждающее поломку Байка. На записи должен быть чётко виден номер. Мы оперативно передадим материалы специалистам для решения вопроса.",
-        feedback: "Отлично! Вы запросили доказательство поломки по регламенту, объяснили, что именно должно быть на видео, и обозначили следующий шаг."
+        courier: "Здравствуйте. Заметил, что батарея на байке стала очень быстро разряжаться. Недавно начал смену, а заряд уже падает на глазах. Подскажите, что можно сделать?",
+        options: [
+          {
+            correct: true,
+            text: "Здравствуйте! Если батарея электровелосипеда разряжается больше, чем на 10% за 10 минут, замените её в ближайшем пункте выдачи электровелосипедов. Их адреса можно посмотреть в приложении.",
+            feedback: "Вы дали чёткий критерий (10% за 10 минут) и конкретное действие — замена батареи в пункте выдачи. Курьер понимает, когда и что делать."
+          },
+          {
+            correct: false,
+            text: "Понял вас. Давайте сначала проверим: возможно, это индикатор отображает заряд некорректно. Проедьте, пожалуйста, ещё 5–10 минут и напишите, как будет меняться процент.",
+            feedback: "Затягиваете решение. Курьер уже наблюдает быстрый разряд — это достаточное основание для замены. Просить его кататься ещё — значит рисковать тем, что байк встанет посреди маршрута."
+          },
+          {
+            correct: false,
+            text: "Такое бывает в холодную погоду — батареи действительно разряжаются быстрее. Скажите, на улице сейчас минус? Если да, это может быть естественной причиной.",
+            feedback: "Формулировка звучит разумно, но не решает проблему. Курьеру нужен понятный критерий и действие, а не уточнение погоды. Правильно — дать порог 10% за 10 минут и направить в пункт выдачи."
+          }
+        ]
       },
       {
-        correct: false,
-        text: "Попробуйте ещё раз переподключить батарею — иногда помогает со второго раза.",
-        feedback: "Курьер уже выполнил это действие. Повторять шаг, который не сработал, — значит тянуть время и раздражать курьера. Пора переходить к следующему этапу: запрос видео."
-      },
-      {
-        correct: false,
-        text: "Понятно. Ждите, мы что-нибудь придумаем.",
-        feedback: "Нет конкретики и нет запроса доказательств. Курьер не понимает, что делать дальше и сколько ждать. Правильно — запросить видео с номером байка и передать материалы специалистам."
+        courier: "Понял",
+        options: [
+          {
+            correct: true,
+            text: "Рады помочь! Если возникнут ещё вопросы — пишите, мы на связи. Хорошей смены!",
+            feedback: "Тёплое и открытое завершение. Курьер чувствует поддержку и знает, куда вернуться, если что-то пойдёт не так."
+          },
+          {
+            correct: false,
+            text: "Хорошо, обращайтесь, если что-то ещё понадобится.",
+            feedback: "Корректно, но не хватает тепла и пожелания. Пара добрых слов в конце диалога — это часть сервиса, а не формальность."
+          },
+          {
+            correct: false,
+            text: "Учтите, пожалуйста: если батарея разрядится посреди маршрута, байк придётся оставить на месте, а это может занять время. Лучше заменить её заранее.",
+            feedback: "Мысль верная, но подача — через страх и давление. Курьер и так торопится, не стоит усиливать стресс. Лучше завершить диалог тепло и по-человечески."
+          }
+        ]
       }
     ]
   },
 
-  /* ---------- ШАГ 3 ---------- */
+  /* ================= КЕЙС 3 ================= */
   {
-    courier: "Вот видео, номер видно. Посмотрите, пожалуйста, скорее, я жду.",
-    options: [
+    title: "Кейс 3. Прокол колеса",
+    steps: [
       {
-        correct: true,
-        text: "Передаю ваше обращение специалисту, который поможет в решении вопроса, пожалуйста, подождите.",
-        feedback: "Верно. Вы подтвердили, что видео получено, и обозначили передачу обращения специалисту — курьер понимает, что процесс идёт."
+        courier: "Здравствуйте. У меня прокололось колесо. Что делать? Я на заказе, время идёт.",
+        options: [
+          {
+            correct: true,
+            text: "Здравствуйте. Обратитесь в ближайший велоцентр. Адреса можно посмотреть в приложении. Специалисты бесплатно заменят вам камеру на пробитом колесе.",
+            feedback: "Вы сразу дали решение (велоцентр), уточнили, что замена бесплатная, и указали, где искать адреса."
+          },
+          {
+            correct: false,
+            text: "Понял. К сожалению, по договору аренды за сохранность байка отвечает курьер, поэтому в первую очередь вам нужно доставить его в велоцентр.",
+            feedback: "Вы пугаете курьера ответственностью, но не даёте адреса и не сообщаете, что замена бесплатная. Курьер в стрессе не поймёт, куда ехать. Правильно — сразу направить в велоцентр и успокоить про стоимость."
+          },
+          {
+            correct: false,
+            text: "Попробуйте, пожалуйста, подкачать колесо насосом — иногда камера держит давление какое-то время, и вы сможете доехать до велоцентра самостоятельно.",
+            feedback: "Опасный совет. Езда на подкачанном, но пробитом колесе может повредить обод — тогда ремонт будет дороже. Курьеру нужен велоцентр, а не временная мера."
+          }
+        ]
       },
       {
-        correct: false,
-        text: "Хорошо, видео посмотрел. Попробуйте ещё раз открыть байк, может, сейчас сработает.",
-        feedback: "Вы возвращаете курьера к шагу, который уже не работает, и не передаёте обращение дальше. Это затягивает решение и снижает доверие к поддержке."
+        courier: "Я не могу сам доставить байк в велоцентр. У меня нет возможности его везти.",
+        options: [
+          {
+            correct: true,
+            text: "Спасибо, что сообщили! Доставьте, пожалуйста, Байк в велоцентр самостоятельно, воспользовавшись городским транспортом. Специалисты его отремонтируют. Адрес пункта выдачи можно найти в приложении.",
+            feedback: "Правильный следующий шаг: вы предложили решение (городской транспорт) и снова указали, где найти адрес. Курьер понимает, что делать."
+          },
+          {
+            correct: false,
+            text: "Понял. Тогда оставьте, пожалуйста, байк на месте и напишите мне его точный адрес — я передам заявку, чтобы его забрали.",
+            feedback: "Звучит заботливо, но по регламенту байк нужно сначала доставить в велоцентр силами курьера. Оставленный на улице байк — это риск штрафа и угона, а заявка «на вывоз» не заменяет решение."
+          },
+          {
+            correct: false,
+            text: "Понимаю, что ситуация непростая. Но по условиям аренды доставка байка в велоцентр — это зона ответственности курьера. Давайте подумаем, как это можно организовать.",
+            feedback: "Вы перекладываете задачу обратно на курьера, хотя он уже сказал, что не может. Нужно предложить конкретный вариант — городской транспорт, а не «давайте подумаем»."
+          }
+        ]
       },
       {
-        correct: false,
-        text: "Видео получил, но без чёткого номера байка мы ничего сделать не можем. Снимайте заново.",
-        feedback: "Курьер написал, что номер видно. Отправлять его на повторную съёмку без проверки — значит обвинять клиента и терять время. Нужно передать обращение специалисту."
-      }
-    ]
-  },
-
-  /* ---------- ШАГ 4 ---------- */
-  {
-    courier: "Жду. Надеюсь, быстро решите.",
-    options: [
-      {
-        correct: true,
-        text: "Ваше обращение зарегистрировано, специалист уже занимается им. Среднее время решения — до 15 минут, я остаюсь с вами на связи. Спасибо за терпение!",
-        feedback: "Идеальное завершение: подтверждение, конкретный срок и готовность помочь дальше. Курьер чувствует, что его не бросили."
-      },
-      {
-        correct: false,
-        text: "Ну, придётся подождать — от нас тут ничего не зависит.",
-        feedback: "Обесценивание и перекладывание ответственности. Курьер остаётся один на один с проблемой. Нужно назвать конкретный срок и остаться на связи."
-      },
-      {
-        correct: false,
-        text: "Хорошо. Всего доброго!",
-        feedback: "Преждевременное завершение диалога. Обращение ещё не решено, курьер без байка и без понимания сроков. Диалог закрывать рано."
+        courier: "Я же говорю, не могу я его сам везти! Он тяжёлый, а я на заказе. Сделайте что-нибудь.",
+        options: [
+          {
+            correct: true,
+            text: "Чтобы вызвать вам такси, пожалуйста, уточните: 1) Ваш номер телефона. 2) Адрес местоположения байка. 3) Сможете ли вы сопроводить водителя грузового такси до велоцентра.",
+            feedback: "Вы предложили реальное решение (такси для перевозки байка) и запросили ровно те данные, которые нужны для вызова."
+          },
+          {
+            correct: false,
+            text: "Хорошо, я оформлю грузовое такси, а вы можете продолжать выполнять заказ — водитель сам доставит байк в велоцентр.",
+            feedback: "Нельзя отправлять байк одного: присутствие курьера может понадобиться для ремонта, замены или завершения аренды. Это условие регламента, и его нельзя нарушать ради удобства."
+          },
+          {
+            correct: false,
+            text: "К сожалению, у меня нет возможности организовать перевозку байка прямо сейчас. Попробуйте, пожалуйста, решить вопрос самостоятельно или обратитесь к нам позже.",
+            feedback: "Отказ без альтернативы. У поддержки есть инструмент — грузовое такси с сопровождением курьера. Нужно было предложить его и запросить данные."
+          }
+        ],
+        /* ---------- РАЗВИЛКА ---------- */
+        branch: {
+          prompt: "Как ответит курьер? (можно посмотреть оба варианта)",
+          options: [
+            {
+              label: "А. Курьер согласен поехать с водителем",
+              courier: "Хорошо, я смогу поехать с водителем. Вот мой номер: +7 900 000-00-00. Адрес: ул. Ленина, д. 5.",
+              operator: "Передаю ваше обращение специалисту, который поможет в решении вопроса, пожалуйста, подождите.",
+              outcome: "success",
+              outcomeText: "Курьер получает грузовое такси и сопровождение до велоцентра. Обращение передано специалисту."
+            },
+            {
+              label: "Б. Курьер отказывается ехать с водителем",
+              courier: "Нет, я не могу поехать с водителем. У меня заказ, я не могу бросить всё и ехать в велоцентр.",
+              operator: "Вызвать такси без вашего согласия доехать до велоцентра не получится, так как ваше присутствие может понадобиться для ремонта, замены или завершения аренды Байка. Вы можете попробовать доставить Байк самостоятельно или связаться с нами позже, когда будете готовы поехать вместе с водителем до велоцентра.",
+              outcome: "neutral",
+              outcomeText: "Курьер отказался. Вы чётко и без давления объяснили условия и оставили ему открытую дверь для возврата к вопросу."
+            }
+          ]
+        }
       }
     ]
   }
@@ -472,14 +604,17 @@ const optionsEl  = document.getElementById('options');
 const progressEl = document.getElementById('progressFill');
 const stepLabel  = document.getElementById('stepLabel');
 
-let step = 0;
-let score = 0;
-let firstTry = true;
+const totalSteps = cases.reduce(function (sum, c) { return sum + c.steps.length; }, 0);
+
+let caseIndex      = 0;
+let stepIndex      = 0;
+let completedSteps = 0;
+let score          = 0;
+let firstTry       = true;
+let branchesShown  = new Set();
 
 /* ---------- утилиты ---------- */
-function scrollDown() {
-  chatEl.scrollTop = chatEl.scrollHeight;
-}
+function scrollDown() { chatEl.scrollTop = chatEl.scrollHeight; }
 
 function addMessage(text, type, mod) {
   const row = document.createElement('div');
@@ -506,6 +641,16 @@ function addFeedback(text, ok, prefix) {
   scrollDown();
 }
 
+function addCaseDivider(title) {
+  const div = document.createElement('div');
+  div.className = 'case-divider';
+  const span = document.createElement('span');
+  span.textContent = title;
+  div.appendChild(span);
+  chatEl.appendChild(div);
+  scrollDown();
+}
+
 function showTyping() {
   const row = document.createElement('div');
   row.className = 'msg courier';
@@ -518,37 +663,46 @@ function showTyping() {
 }
 
 function updateProgress() {
-  const done = Math.min(step, scenario.length);
-  progressEl.style.width = (done / scenario.length * 100) + '%';
-  if (step < scenario.length) {
-    stepLabel.textContent = 'Шаг ' + (step + 1) + ' из ' + scenario.length;
+  const done = Math.min(completedSteps, totalSteps);
+  progressEl.style.width = (done / totalSteps * 100) + '%';
+  if (completedSteps < totalSteps) {
+    stepLabel.textContent = 'Шаг ' + (completedSteps + 1) + ' из ' + totalSteps;
   }
 }
 
 /* ---------- шаги ---------- */
 function startStep() {
-  if (step >= scenario.length) {
-    finish();
+  if (caseIndex >= cases.length) { finish(); return; }
+
+  const currentCase = cases[caseIndex];
+
+  if (stepIndex >= currentCase.steps.length) {
+    caseIndex++;
+    stepIndex = 0;
+    startStep();
     return;
   }
+
+  const step = currentCase.steps[stepIndex];
 
   updateProgress();
   firstTry = true;
   optionsEl.innerHTML = '';
 
-  const current = scenario[step];
+  if (stepIndex === 0) addCaseDivider(currentCase.title);
+
   showTyping();
 
   setTimeout(function () {
     const typing = document.getElementById('typingRow');
     if (typing) typing.remove();
 
-    addMessage(current.courier, 'courier');
-    renderOptions(current);
+    addMessage(step.courier, 'courier');
+    renderOptions(step);
   }, 800);
 }
 
-function renderOptions(current) {
+function renderOptions(step) {
   optionsEl.innerHTML = '';
 
   const label = document.createElement('div');
@@ -556,25 +710,20 @@ function renderOptions(current) {
   label.textContent = 'Выберите ответ оператора';
   optionsEl.appendChild(label);
 
-  current.options.forEach(function (opt) {
+  step.options.forEach(function (opt) {
     const btn = document.createElement('button');
     btn.className = 'option';
     btn.type = 'button';
     btn.textContent = opt.text;
-    btn.addEventListener('click', function () {
-      choose(opt, btn);
-    });
+    btn.addEventListener('click', function () { choose(opt, btn, step); });
     optionsEl.appendChild(btn);
   });
 }
 
-function choose(opt, btn) {
-  document.querySelectorAll('.option').forEach(function (b) {
-    b.disabled = true;
-  });
+function choose(opt, btn, step) {
+  document.querySelectorAll('.option').forEach(function (b) { b.disabled = true; });
 
   if (opt.correct) {
-    /* верный ответ */
     addMessage(opt.text, 'operator');
     btn.classList.add('correct');
 
@@ -583,13 +732,19 @@ function choose(opt, btn) {
     optionsEl.innerHTML = '';
     addFeedback(opt.feedback, true, 'Верно!');
 
-    step++;
+    completedSteps++;
     updateProgress();
 
+    if (step.branch) {
+      branchesShown = new Set();
+      setTimeout(function () { renderBranch(step); }, 1200);
+      return;
+    }
+
+    stepIndex++;
     setTimeout(startStep, 1500);
 
   } else {
-    /* неверный ответ */
     addMessage(opt.text, 'operator', 'wrong');
     btn.classList.add('wrong');
 
@@ -604,26 +759,84 @@ function choose(opt, btn) {
   }
 }
 
+/* ---------- развилка ---------- */
+function renderBranch(step) {
+  optionsEl.innerHTML = '';
+
+  const label = document.createElement('div');
+  label.className = 'options-label';
+  label.textContent = step.branch.prompt;
+  optionsEl.appendChild(label);
+
+  step.branch.options.forEach(function (br, i) {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.type = 'button';
+
+    if (branchesShown.has(i)) {
+      btn.disabled = true;
+      btn.style.opacity = '0.55';
+      btn.textContent = '✓ ' + br.label;
+    } else {
+      btn.textContent = br.label;
+      btn.addEventListener('click', function () {
+        showBranchOutcome(step, br, i);
+      });
+    }
+
+    optionsEl.appendChild(btn);
+  });
+
+  const finishBtn = document.createElement('button');
+  finishBtn.className = 'option primary';
+  finishBtn.type = 'button';
+  finishBtn.textContent = 'Завершить тренажёр';
+  finishBtn.addEventListener('click', finish);
+  optionsEl.appendChild(finishBtn);
+
+  scrollDown();
+}
+
+function showBranchOutcome(step, br, idx) {
+  branchesShown.add(idx);
+  optionsEl.innerHTML = '';
+
+  addMessage(br.courier, 'courier');
+
+  setTimeout(function () {
+    addMessage(br.operator, 'operator');
+
+    setTimeout(function () {
+      addFeedback(
+        br.outcomeText,
+        br.outcome === 'success',
+        br.outcome === 'success' ? 'Успех!' : 'Развилка завершена:'
+      );
+
+      setTimeout(function () { renderBranch(step); }, 800);
+    }, 800);
+  }, 800);
+}
+
 /* ---------- финал ---------- */
 function finish() {
   progressEl.style.width = '100%';
-  stepLabel.textContent = 'Кейс завершён';
+  stepLabel.textContent = 'Тренажёр завершён';
   optionsEl.innerHTML = '';
 
-  const total = scenario.length;
-  const ratio = score / total;
+  const total = totalSteps;
+  const ratio = total > 0 ? score / total : 0;
 
   let title, sub;
-
   if (score === total) {
     title = 'Отлично! 🎉';
-    sub = 'Вы провели диалог как опытный специалист поддержки: спокойно, по шагам, с заботой о времени курьера.';
+    sub = 'Вы провели все диалоги как опытный специалист поддержки: спокойно, по шагам, с заботой о времени курьера.';
   } else if (ratio >= 0.5) {
     title = 'Хороший результат 👍';
-    sub = 'Основные шаги выполнены верно. Пересмотрите шаги, где вы сомневались, — там были более точные и безопасные формулировки.';
+    sub = 'Основные шаги выполнены верно. Пересмотрите кейсы, где вы сомневались, — там были более точные и безопасные формулировки.';
   } else {
     title = 'Стоит повторить';
-    sub = 'Попробуйте пройти кейс ещё раз. Выбирайте варианты, где есть конкретная инструкция, запрос доказательств и уважение к времени курьера.';
+    sub = 'Попробуйте пройти кейсы ещё раз. Выбирайте варианты, где есть конкретная инструкция, запрос доказательств и уважение к времени курьера.';
   }
 
   const card = document.createElement('div');
@@ -647,12 +860,16 @@ function finish() {
 
 /* ---------- перезапуск ---------- */
 function reset() {
-  step = 0;
+  caseIndex = 0;
+  stepIndex = 0;
+  completedSteps = 0;
   score = 0;
   firstTry = true;
+  branchesShown = new Set();
   chatEl.innerHTML = '';
   optionsEl.innerHTML = '';
   progressEl.style.width = '0%';
+  stepLabel.textContent = 'Шаг 1 из ' + totalSteps;
   startStep();
 }
 
