@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Диалоговый тренажёр — Кейсы по поломкам и неисправностям байка</title>
 <style>
+  /* ============ ШРИФТЫ ============ */
+  /* YS Geo Heavy — проприетарный шрифт Яндекса.
+     Если он установлен в системе / подгружен через @font-face на стороне LMS,
+     браузер возьмёт его. Иначе — фолбэк на YS Text и системные. */
+  @font-face {
+    font-family: 'YS Geo';
+    src: local('YS Geo Heavy'),
+         local('YSGeo-Heavy'),
+         local('YS Geo');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   /* ============ БАЗА ============ */
   * { box-sizing: border-box; }
 
@@ -67,13 +81,23 @@
     font-size: 20px; flex-shrink: 0;
   }
 
+  /* ---------- ЗАГОЛОВОК: YS Geo Heavy ---------- */
   .header h1 {
-    font-size: 17px; line-height: 1.25;
-    margin: 0; font-weight: 600; letter-spacing: -.01em;
+    font-family: 'YS Geo', 'YS Text', 'YSText', 'YS Text Regular',
+                 -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
   }
 
   .header p {
-    margin: 2px 0 0; font-size: 12.5px; color: var(--muted);
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
   }
 
   .progress-wrap {
@@ -298,7 +322,16 @@
     animation: pop .35s ease;
   }
 
-  .result-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+  .result-title {
+    font-family: 'YS Geo', 'YS Text', 'YSText', 'YS Text Regular',
+                 -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
 
   .result-score {
     font-size: 34px; font-weight: 700;
@@ -340,7 +373,8 @@
     .options { padding: 14px 16px 18px; }
     .msg     { max-width: 94%; }
     .bubble  { font-size: 14px; }
-    .header h1 { font-size: 15.5px; }
+    .header h1 { font-size: 17px; }
+    .result-title { font-size: 19px; }
   }
 </style>
 </head>
@@ -717,7 +751,7 @@ function renderOptions(step) {
   label.textContent = 'Выберите ответ оператора';
   optionsEl.appendChild(label);
 
-  /* Перемешиваем варианты каждый раз при показе шага */
+  /* Перемешиваем варианты при каждом показе шага */
   const shuffled = shuffleArray(step.options);
 
   shuffled.forEach(function (opt) {
